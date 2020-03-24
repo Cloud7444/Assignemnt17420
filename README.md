@@ -2,6 +2,8 @@
 
 This project is going to make a web application smilar with instagram.
 
+--To do
+24 March night, put setup assignment to heroku aside and work other task for now
 
 
 
