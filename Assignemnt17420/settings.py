@@ -25,7 +25,7 @@ SECRET_KEY = 'hqcq&%-pv(io$37s3*u2pjfuo7dj1(t$$k)37y5joxg5)ids7!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['evening-basin-27992.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['je211.herokuapp.com','127.0.0.1']
 
 
 # Application definition
