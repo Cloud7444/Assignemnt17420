@@ -17,6 +17,3 @@ Deploy heroku for add-on. Didn't vertify the account and could not add addons.
 
 ##Error 4 
 Has problem when installing psycopg2 -- that error occurs when it can't find the SSL library (the library not found -lssl error), so you have to tell it where it is on MacOS
-
-##Error 5
-Accident to put "..." in Dataviewer and whole page fail to load.
