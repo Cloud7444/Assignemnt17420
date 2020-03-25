@@ -25,3 +25,6 @@ deploy heroku. Procfile xxxx.wsig  --- xxxx must the project name
 ##log6 
 after app deploy on heroku. OperationalError occur due to hasnt run migrate. -- notice database is empty at this point(running on local)
 
+##log6
+In project repo forgot to link the heroku git. Can not remote access from terminal.
+
