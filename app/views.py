@@ -9,6 +9,8 @@ from django.http import Http404
 from django.urls import reverse
 from django.views import generic
 
+def home(request):
+    return HttpResponse('app/index.html')
 
 class IndexView(generic.ListView):
     template_name = 'app/index.html'
