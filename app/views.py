@@ -9,11 +9,11 @@ from django.views import generic
 from app.models import Question, Choice
 
 
-def home(request):
-    return HttpResponse('app/index.html')
+# def home(request):
+#     return HttpResponse('app/index.html')
 
 class IndexView(generic.ListView):
-    template_name = 'app/index.html'
+    template_name = 'app/index1.html'
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
