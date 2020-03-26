@@ -17,13 +17,12 @@ from django.contrib import admin
 from django.urls import include, path
 
 
-link = 'app.urls'
+
 
 urlpatterns = [
 
-    path('',include(link)),
-    path('app/', include('app.urls')),
 
+    path('', include('app.urls')), #default index page
     path('admin/', admin.site.urls),
 
 
