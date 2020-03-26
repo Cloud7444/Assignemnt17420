@@ -3,6 +3,7 @@
 This project is going to make a web application smilar with instagram.
 
 --sqlite file need to be backup
+--3.25 Success deploy web app on cloud 
 
 
 
