@@ -9,17 +9,23 @@ from django.views import generic
 from app.models import Question, Choice
 
 
-# def home(request):
-#     return HttpResponse('app/index.html')
+def home(request):
+    return render(request, 'app/indexpage.html')
 
-class IndexView(generic.ListView):
-    template_name = 'app/index1.html'
-    context_object_name = 'latest_question_list'
 
-    def get_queryset(self):
-        """Return the last five published questions."""
-        return Question.objects.order_by('-pub_date')[:5]
+# class IndexView(generic.ListView):
+#     template_name = 'app/index1.html'
+#     context_object_name = 'latest_question_list'
+#
+#     def get_queryset(self):
+#         """Return the last five published questions."""
+#         return Question.objects.order_by('-pub_date')[:5]
 
+def register(request):
+    return render(request, 'app/register.html')
+
+
+##below is the django tutorial part
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'app/detail.html'
@@ -28,6 +34,7 @@ class DetailView(generic.DetailView):
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'app/results.html'
+
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -46,4 +53,3 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('app:results', args=(question.id,)))
-

@@ -17,14 +17,16 @@ from django.contrib import admin
 from django.urls import include, path
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from app.views import home, register
 
 urlpatterns = [
 
 
-    path('', include('app.urls')), #default index page
+    path('', home), #default index page
     path('admin/', admin.site.urls),
+    # path('register/',register),
 
 
 ]
 
-urlpatterns += staticfiles_urlpatterns()
+# urlpatterns += staticfiles_urlpatterns()
