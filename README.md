@@ -29,3 +29,5 @@ after app deploy on heroku. OperationalError occur due to hasnt run migrate. -- 
 ##log6
 In project repo forgot to link the heroku git. Can not remote access from terminal.
 
+##log7
+Figure out that reflect diff pages. In project urls should path('',included(app.urls)). What this does it is basically import the app.urls setting and accroding the app.urls settting to open the link. I made a mistake that I just put   path('', home) in the project url.py that's only will work on the project folder. will not turn into the app folder. By chaning to path('', include("app.urls")), #default index page. then everything works fine
