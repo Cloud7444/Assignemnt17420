@@ -1,12 +1,9 @@
-{% extends "app/indexpage.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}">
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'app:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No apps are available.</p>
-{% endif %}
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Register</button>
+    </form>
+    If you have an account, <a href="/login">Login</a> instead.
+{% endblock %}

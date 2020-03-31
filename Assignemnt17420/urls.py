@@ -22,11 +22,10 @@ from app.views import home, register
 urlpatterns = [
 
 
-    path('', home), #default index page
+    path('', include("app.urls")), #default index page
     path('admin/', admin.site.urls),
-    # path('register/',register),
 
 
 ]
 
-# urlpatterns += staticfiles_urlpatterns()
+urlpatterns += staticfiles_urlpatterns()

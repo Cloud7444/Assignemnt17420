@@ -1,19 +1,29 @@
-{% load static %}
+
 <html lang="en">
 <head>
+    {% load static %}
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <nav>
-    <div>
-        <a href="/">Test</a>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/register">Register</a></li>
-
-        </ul>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="demo/">Demo</a></li>
+        <li><a href="login/">Login</a></li>
+        <li><a href="register/">Register</a></li>
+      </ul>
     </div>
-</nav>
+  </nav>
+
+<div>
+    <input type="text">
+</div>
 </body>
 </html>
