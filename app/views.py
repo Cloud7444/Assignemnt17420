@@ -16,7 +16,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request,'app/indexpage.html')
+            return redirect('app:home')
     context = {'form':form}
     return render(request, 'app/register.html',context)
 
