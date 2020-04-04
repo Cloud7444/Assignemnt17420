@@ -6,14 +6,14 @@ from django.contrib import messages
 from django.views import generic
 from .models import Post
 
-class home(generic.ListView):
-    template_name = "app/indexpage.html"
-    context_object_name = "POST"
-    queryset = Post.objects.all()
+# class home(generic.ListView):
+#     template_name = "app/indexpage.html"
+#     context_object_name = "POST"
+#     queryset = Post.objects.all()
 
-# def home(request):
-#
-#     return render(request, 'app/indexpage.html')
+def home(request):
+
+    return render(request, 'app/indexpage.html')
 
 
 def register(request):
