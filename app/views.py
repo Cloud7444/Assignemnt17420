@@ -3,10 +3,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from . form import UserRegisterForm
 from django.contrib import messages
-from django.views import generic
+from django.views.generic import ListView ,DetailView
 from .models import Post
 
-class home(generic.ListView):
+class home(ListView):
     template_name = "app/indexpage.html"
     context_object_name = "POST"
     queryset = Post.objects.all()
