@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect ,HttpResponse
 from django.contrib.auth import login, authenticate
 from . form import UserRegisterForm
 from django.contrib import messages
@@ -11,9 +11,9 @@ class home(ListView):
     context_object_name = "POST"
     queryset = Post.objects.all()
 
-# def home(request):
-#
-#     return render(request, 'app/indexpage.html')
+def IndexHome(request):
+
+    return render(request, 'app/indexpage.html')
 
 
 def register(request):
@@ -52,3 +52,14 @@ def loginPage(request):
     context = {}
     return render(request, 'app/login.html',context)
 
+
+def postview(request):
+    allposts = Post.objects.all()
+    return render(request,'app/indexpage.html',
+                  {'allPost' : allposts})
+
+
+def addPost(request):
+    newPost = Post(caption=request.POST['caption'])
+    newPost.save()
+    return redirect('app:home')

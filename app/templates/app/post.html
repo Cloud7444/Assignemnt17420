@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+     {% for post in allPost %}
+        <li>{{ post.caption }}</li>
+         <li>{{ post.people }}</li>
+    {% endfor %}
+    <form action="/addPost/" method="post"> {% csrf_token %}
+        <input type="text" name="caption">
+        <input type="submit" value="Add">
+
+    </form>
+</ul>
+</body>
+</html>

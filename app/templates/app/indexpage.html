@@ -3,10 +3,10 @@
 <head>
     {% load static %}
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">#}
+{##}
+{#    <!-- Compiled and minified JavaScript -->#}
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>#}
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -22,13 +22,27 @@
     </div>
   </nav>
 
-<div>
-    {% for post in POST %}
-        <p>{{ post.author }}</p>
-        <p>{{ post.caption }}</p>
-        <hr>
+<ol>
+     {% for post in allPost %}
+         <ul class="collection with-header">
+         <li class="collection-header"><h4>{{ post.author }}</h4></li>
+         <li class="collection-item">{{ post.caption }}</li>
+         <li class="collection-item">{{ post.pic }}</li>
+         <li class="collection-item">{{ post.post_date }}</li>
+         </ul>
+         <hr>
     {% endfor %}
-</div>
+</ol>
+
+    <form action="/addPost/" method="post">
+        {% csrf_token %}
+
+
+        caption :<input type="text" name="caption">
+
+        <input type="submit" value="Post">
+
+    </form>
 
 
 </body>
