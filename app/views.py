@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect ,HttpResponse
 from django.contrib.auth import login, authenticate
 from . form import UserRegisterForm
 from django.contrib import messages
-from django.views.generic import ListView ,DetailView
+from django.views.generic import ListView
 from .models import Post
 
 class home(ListView):
@@ -53,12 +53,19 @@ def loginPage(request):
     return render(request, 'app/login.html',context)
 
 
+#display the post
 def postview(request):
     allposts = Post.objects.all()
     return render(request,'app/indexpage.html',
                   {'allPost' : allposts})
 
 
+#the page to add post
+def addPostPage(request):
+    return render(request,'app/post.html')
+
+
+#function to add new post
 def addPost(request):
     newPost = Post(caption=request.POST['caption'])
     newPost.save()
