@@ -13,7 +13,7 @@
 <body>
 <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
+      <a href="#" class="brand-logo">Instgram</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="demo/">Demo</a></li>
         <li><a href="login/">Login</a></li>
@@ -28,7 +28,12 @@
          <ul class="collection with-header">
          <li class="collection-header"><h1>{{ post.author }}</h1></li>
          <li class="collection-item">{{ post.caption }}</li>
-         <li class="collection-item">{{ post.pic }}</li>
+             <li class="collection-item">{{ post.comment }}</li>
+         <li class="collection-item">
+             {% if post.pic %}
+             <img src="{{ post.pic.url }}">
+             {% endif %}
+         </li>
          <li class="collection-item">{{ post.post_date }}</li>
          </ul>
          <hr>

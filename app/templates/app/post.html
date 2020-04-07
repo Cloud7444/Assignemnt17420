@@ -18,8 +18,11 @@
 {#    {% endfor %}#}
 {#</ol>#}
 {#  addPost under this is calling the function addPost  #}
-    <form action="/addPost/" method="post"> {% csrf_token %}
-       caption: <input type="text" name="caption">
+    <form action="/addPost/" method="post" enctype="multipart/form-data"> {% csrf_token %}
+        author: {{ form.author }}
+        comment: {{ form.comment }}
+         caption: {{ form.caption }}
+         picture : {{ form.pic }}
         <input type="submit" value="Add">
 
     </form>

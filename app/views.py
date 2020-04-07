@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect ,HttpResponse
 from django.contrib.auth import login, authenticate
-from . form import UserRegisterForm
+from . form import UserRegisterForm ,ListAuthor
 from django.contrib import messages
 from django.views.generic import ListView
 from .models import Post
@@ -62,11 +62,16 @@ def postview(request):
 
 #the page to add post
 def addPostPage(request):
-    return render(request,'app/post.html')
+    form = ListAuthor(request.POST)
+    context = {'form': form}
+    return render(request,'app/post.html',context)
 
 
 #function to add new post
 def addPost(request):
-    newPost = Post(caption=request.POST['caption'])
+    newPost = Post(caption=request.POST['caption'],
+                   comment=request.POST['comment'],
+                   author_id=request.POST['author'],
+                   pic=request.FILES['pic'])
     newPost.save()
     return redirect('app:home')
