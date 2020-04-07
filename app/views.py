@@ -62,16 +62,24 @@ def postview(request):
 
 #the page to add post
 def addPostPage(request):
-    form = ListAuthor(request.POST)
+    form = ListAuthor()
     context = {'form': form}
     return render(request,'app/post.html',context)
 
 
+
+
 #function to add new post
 def addPost(request):
-    newPost = Post(caption=request.POST['caption'],
-                   comment=request.POST['comment'],
-                   author_id=request.POST['author'],
-                   pic=request.FILES['pic'])
-    newPost.save()
+
+
+    if request.method == "POST":
+        form = ListAuthor(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            Post = form.save()
+            Post.save()
+            return redirect('app:home')
+        else:
+            print('missing fileds')
     return redirect('app:home')
+

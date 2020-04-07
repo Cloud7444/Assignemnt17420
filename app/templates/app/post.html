@@ -6,18 +6,6 @@
 </head>
 <body>
 
-{#     <ol>#}
-{#     {% for post in allPost %}#}
-{#         <ul class="collection with-header">#}
-{#         <li class="collection-header"><h4>{{ post.author }}</h4></li>#}
-{#         <li class="collection-item">{{ post.caption }}</li>#}
-{#         <li class="collection-item">{{ post.pic }}</li>#}
-{#         <li class="collection-item">{{ post.post_date }}</li>#}
-{#         </ul>#}
-{#         <hr>#}
-{#    {% endfor %}#}
-{#</ol>#}
-{#  addPost under this is calling the function addPost  #}
     <form action="/addPost/" method="post" enctype="multipart/form-data"> {% csrf_token %}
         author: {{ form.author }}
         comment: {{ form.comment }}

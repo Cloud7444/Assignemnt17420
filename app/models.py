@@ -14,8 +14,8 @@ class AuthorList(models.Model):
 
 
 class Post(models.Model):
-    author = models.ForeignKey(AuthorList,on_delete=models.CASCADE,null=True,blank=True)
-    pic = models.ImageField(upload_to="",blank=True, null=True)
+    author = models.ForeignKey(AuthorList,on_delete=models.CASCADE,null=True,blank=False)
+    pic = models.ImageField(upload_to="", null=True,blank=False)
     caption = models.TextField(max_length=100,blank=True,null=True)
     post_date = models.DateTimeField(default=timezone.now)
     comment = models.TextField(max_length=100,blank=True,null=True)
