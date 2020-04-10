@@ -10,17 +10,29 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    #hello-msg{
+        color: aqua;
+    }
+
+</style>
 <body>
+
 <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">Instgram</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="demo/">Demo</a></li>
+          {% if request.user.is_staff %}
         <li><a href="login/">Login</a></li>
         <li><a href="register/">Register</a></li>
-          <li><a href="addPostPage/">Post</a></li>
+          {% endif %}
+          <li><a href="addPost/">Post</a></li>
+          <li><span id="hello-msg">Hello,{{ request.user }} </span></li>
+          <li><a href="{% url 'app:logout' %}">Logout</a></li>
       </ul>
+
     </div>
+
   </nav>
 
 
@@ -36,7 +48,19 @@
          </li>
          <li class="collection-item">{{ post.post_date }}</li>
          </ul>
+         <form action="{% url 'app:delete' post.id  %}" method="POST">
+				{% csrf_token %}
+
+				<input class="btn btn-danger" type="submit" name="Confirm" value="Delete">
+         </form>
+         <form action="{% url 'app:update' post.id  %}" method="POST">
+				{% csrf_token %}
+
+				<input class="btn btn-danger" type="submit" name="Confirm" value="Update">
+         </form>
+
          <hr>
+
     {% endfor %}
 
 

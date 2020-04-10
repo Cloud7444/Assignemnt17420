@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% block content %}
 
-    <form action="/addPost/" method="post" enctype="multipart/form-data"> {% csrf_token %}
-        author: {{ form.author }}
-        comment: {{ form.comment }}
-         caption: {{ form.caption }}
-         picture : {{ form.pic }}
+    <form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+
+        {{ form.as_p }}
         <input type="submit" value="Add">
 
     </form>
 
-</body>
-</html>
+{% endblock %}
