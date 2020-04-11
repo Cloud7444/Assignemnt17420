@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect ,HttpResponse, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from . form import UserRegisterForm ,ListAuthor
 from django.contrib import messages
+
 from .models import Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
@@ -17,8 +18,9 @@ def register(request):
             form = UserRegisterForm(request.POST)
             if form.is_valid():
                 form.save()
-                messages.success(request,'works')
-                return redirect('app:home')
+                username = form.cleaned_data.get('username')
+                messages.success(request, 'Account was created for ' + username)
+                return redirect('app:login')
             else:
                 messages.success(request, 'not works')
         context = {'form':form}
@@ -34,8 +36,7 @@ def loginPage(request):
             password = request.POST.get('password')
 
             user = authenticate(request, username=username, password=password)
-            if user:
-                print(f"{user}")
+            if user is not None:
                 login(request,user)
                 return redirect('app:home')
 
@@ -52,7 +53,7 @@ def logoutpage(request):
     return redirect('app:login')
 
 
-# @login_required(login_url='app:login')
+@login_required(login_url='app:login')
 def postview(request):
     # if request.user.is_staff==True:
         allposts = Post.objects.all()
@@ -85,7 +86,6 @@ def updatepost(request,pk):
     return render(request, "app/post.html", context)
 
 @login_required(login_url='app:login')
-#function to add new post
 def addPost(request):
 
     form = ListAuthor()

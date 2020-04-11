@@ -1,9 +1,0 @@
-{% block content %}
-<h1>{{ post.author }}</h1>
-<p>{{ post.caption }}</p>
-<p>{{ post.comment }}</p>
-    {% if post.pic %}
-             <img class="responsive-img" src="{{ post.pic.url }}" >
-             {% endif %}
-    <li><a href="edit/">Up</a></li>
-{% endblock %}
