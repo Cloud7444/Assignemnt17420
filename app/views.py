@@ -55,12 +55,12 @@ def logoutpage(request):
 
 @login_required(login_url='app:login')
 def postview(request):
-    # if request.user.is_staff==True:
+     if request.user.is_staff==True:
         allposts = Post.objects.all()
         return render(request,'app/indexpage.html',
                       {'allPost' : allposts})
-    # else:
-    #     return redirect('app:userpage')
+     else:
+         return redirect('app:userpage')
 
 
 def userpage(request):
