@@ -33,3 +33,9 @@ Figure out that reflect diff pages. In project urls should path('',included(app.
 ##log8
 remote run heroku install pillow, but everything run migrate still throw the same erros missing the pillow. 
 Solution : Add pillow==7.1.1 to requirement.txt
+
+##log9
+Make user profile model, set default pic for new user.
+
+##log10 
+set form filter, querySet.
