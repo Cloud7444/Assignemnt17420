@@ -1,7 +1,8 @@
-
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -10,65 +11,54 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<style>
-    #hello-msg{
-        color: aqua;
-    }
-
-</style>
 <body>
 
 <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Instgram</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-          {% if request.user.is_staff %}
-        <li><a href="login/">Login</a></li>
-        <li><a href="register/">Register</a></li>
-          {% endif %}
-          <li><a href="addPost/">Post</a></li>
+      <a href="{% url 'app:home' %}" class="brand-logo right">Instgram</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+
           <li><span id="hello-msg">Hello,{{ request.user }} </span></li>
+          <li><a href="{% url 'app:profile' %}">My Profile</a></li>
+          <li><a href="{% url 'app:addpost' %}">Post</a></li>
+
           <li><a href="{% url 'app:logout' %}">Logout</a></li>
       </ul>
 
     </div>
 
   </nav>
-
-
-     {% for post in allPost %}
+{% block content %}
+   {% for post in allPost %}
 
          <ul class="collection with-header">
-             <li class="collection-header"><h1>{{ post.author }}</h1></li>
-             <li class="collection-item">{{ post.caption }}</li>
-             <li class="collection-item">{{ post.comment }}</li>
-
              <li class="collection-item">
                  {% if post.pic %}
                      <img class="responsive-img" src="{{ post.pic.url }}" >
                  {% endif %}
              </li>
-             <li class="collection-item">{{ post.post_date }}</li>
+
+             <li class="collection-item">Caption:{{ post.caption }}</li>
+             <li class="collection-item">Comment:{{ post.comment }}</li>
+             <li class="collection-item">Author:{{ post.author }}</li>
+             <li class="collection-item">Date:{{ post.post_date }}</li>
          </ul>
-
-         <form action="{% url 'app:delete' post.id  %}" method="POST">
+       <form action="{% url 'app:likepost'  %}" method="POST">
 				{% csrf_token %}
-
-				<input class="btn btn-danger" type="submit" name="Confirm" value="Delete">
-         </form>
-
-         <form action="{% url 'app:update' post.id  %}" method="POST">
-				{% csrf_token %}
-
-				<input class="btn btn-danger" type="submit" name="Confirm" value="Update">
-         </form>
+                {% if is_liked %}
+                    <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">Dislike</button>
+                {% else %}
+                    <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">like</button>
+                {% endif %}
+       {{post.likes.count}} Likes
+       </form>
 
          <hr>
 
     {% endfor %}
-
-
-
-
+{% endblock %}
 </body>
 </html>
+
+
+

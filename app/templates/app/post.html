@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-    <form action="/addPost/" method="post" enctype="multipart/form-data"> {% csrf_token %}
-        author: {{ form.author }}
-        comment: {{ form.comment }}
-         caption: {{ form.caption }}
-         picture : {{ form.pic }}
-        <input type="submit" value="Add">
+{% extends 'app/nav.html' %}
+{% block content %}
+     <form action="/addPost/" method="post" enctype="multipart/form-data"> {% csrf_token %}
+{#        author: {{ form.author }}#}
+        comment: {{ form.comment }}<br>
+         caption: {{ form.caption }}<br>
+         picture : {{ form.pic }}<br>
+        <input type="submit" value="Post">
 
     </form>
+{% endblock content %}
 
-</body>
-</html>
