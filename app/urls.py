@@ -15,6 +15,7 @@ urlpatterns = [
     # path('updatepost/<int:pk>/', views.updatepost, name="update"),
     # path('userprofile/<int:pk>/', views.UserProfilePage, name="userprofile"),
     path('profile/', views.UserProfilePage, name='profile'),
-    path('likepost/',views.likepost,name='likepost')
+    path('likepost/',views.likepost,name='likepost'),
+
 
 ]

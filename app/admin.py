@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post , AuthorList , UserProfile
+from .models import *
 
 class PostAdmin(admin.ModelAdmin):
 
@@ -8,6 +8,9 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['author']
 
 
+
+
 admin.site.register(Post,PostAdmin)
 admin.site.register(AuthorList)
 admin.site.register(UserProfile)
+admin.site.register(like)

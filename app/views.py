@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect ,HttpResponse, get_object_or_404, 
 from django.contrib.auth import login, authenticate, logout
 from . form import UserRegisterForm ,ListAuthor,UserUpdateForm,ProfileUpdateForm
 from django.contrib import messages
-from .models import Post, User,UserProfile
+from .models import *
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
 
@@ -124,15 +124,7 @@ def DeletePost(request,pk):
 
 @login_required(login_url='app:login')
 def UserProfilePage(request,pk=None):
-    # if pk:
-    #     user = User.objects.get(pk=pk)
-    #
-    # else:
-    #     user = request.user
-    # userpost = request.user.post_set.all()
-    # context ={'user':user,
-    #           'post':userpost}
-    # return render(request,'app/userprofile.html',context)
+
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,

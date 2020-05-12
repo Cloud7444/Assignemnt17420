@@ -24,11 +24,17 @@ class Post(models.Model):
     def __str__(self):
          return self.caption
 
+class like(models.Model):
+    like_post_name = models.ForeignKey(Post,on_delete=models.CASCADE,null=True,blank=True)
+    likes = models.ManyToManyField(User,null=True,blank=True)
+    def __str__(self):
+        return str(self.like_post_name.caption)
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     phone = models.CharField(max_length=255,blank=True,null=True)
     address = models.CharField(max_length=255,blank=True,null=True)
     pic = models.ImageField(upload_to="",null=True,blank=True,default='default.jpg')
+
     def __str__(self):
          return self.user.username

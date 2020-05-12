@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
+from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,6 +21,13 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
+
+def get_env_var(var):
+    try:
+        return os.environ[var]
+    except KeyError:
+        error_msg = f'Set the {var} environment variable.'
+        raise ImproperlyConfigured(error_msg)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -141,13 +149,24 @@ INTERNAL_IPS =[
 
 
 #S3 BUCKETS CONFIG
+AWS_ACCESS_KEY_ID =get_env_var('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = get_env_var('AWS_SECRET_ACCESS_KEY')
 
-AWS_ACCESS_KEY_ID = 'AKIARBLTACNBJHAOJPPN'
-AWS_SECRET_ACCESS_KEY = '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'
+# AWS_ACCESS_KEY_ID = 'AKIARBLTACNBJHAOJPPN'
+# AWS_SECRET_ACCESS_KEY = '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'
+
 AWS_STORAGE_BUCKET_NAME = 'je211assignment'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'dcf19960828@gmail.com'
+EMAIL_HOST_PASSWORD ='123456abc.'
 
