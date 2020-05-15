@@ -12,11 +12,13 @@ class UserRegisterForm(UserCreationForm):
 
 
 class ListAuthor(forms.ModelForm):
-
-
     class Meta:
         model = Post
         fields = ['comment','caption','pic']
+        widgets ={
+            'comment' : forms.TextInput(attrs={'class': 'form-control'}),
+            'caption': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
