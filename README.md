@@ -1,4 +1,4 @@
-# 7420_Assingment1
+# 7444_Assingment1
 https://je211.herokuapp.com/
 
 This project is going to make a web application smilar with instagram. This application is going to allow user to regitser and login to page. Posting thing like instagram does. Allow user to post image with caption. Other user can add comment to the post and liking post as well. 
