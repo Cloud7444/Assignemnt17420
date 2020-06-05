@@ -18,22 +18,6 @@
 </head>
 <body>
 
-{#<nav>#}
-{#    <div class="nav-wrapper" style="background-color: white">#}
-{##}
-{#      <a style="color: #75A478; margin-top: 8px" href="{% url 'app:home' %}" class="brand-logo right"><img src="{% static "app/images/logo.png" %}" alt="" width="20%" style="margin-right: 10px">UniCity</a>#}
-{#      <ul id="nav-mobile" class="left hide-on-med-and-down">#}
-{##}
-{#          <li><span id="hello-msg">Hello,{{ request.user }} </span></li>#}
-{#          <li><a href="{% url 'app:profile' %}">My Profile</a></li>#}
-{#          <li><a href="{% url 'app:addpost' %}">Post</a></li>#}
-{##}
-{#          <li><a href="{% url 'app:logout' %}">Logout</a></li>#}
-{#      </ul>#}
-{##}
-{#    </div>#}
-{##}
-{#  </nav>#}
 
 <nav class="navbar fixed-top navbar-expand-sm navbar-dark px-5" style="background-color: white">
     <a href="{% url 'app:home' %}" class="navbar-brand" style="font-size: 1.8rem;color: #75A478">
@@ -55,33 +39,10 @@
 </nav>
 
 {% block content %}
+    <div>
 
-   {% for post in allPost %}
-        <div style="width: 80%; float: left">
-             <ul class="collection with-header">
-                 <li class="collection-item">
-                     {% if post.pic %}
-                         <img class="responsive-img" src="{{ post.pic.url }}" >
-                     {% endif %}
-                 </li>
+        <div style="float: left; width: 20%">
 
-                 <li class="collection-item">Caption:{{ post.caption }}</li>
-                 <li class="collection-item">Comment:{{ post.comment }}</li>
-                 <li class="collection-item">Author:{{ post.author }}</li>
-                 <li class="collection-item">Date:{{ post.post_date }}</li>
-             </ul>
-           <form action="{% url 'app:likepost'  %}" method="POST">
-                    {% csrf_token %}
-                    {% if is_liked %}
-                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">Dislike</button>
-                    {% else %}
-                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">like</button>
-                    {% endif %}
-           {{post.likes.count}} Likes
-
-           </form>
-        </div>
-        <div style="width: 20%; float: right">
         <!-- start sw-rss-feed code -->
         <script type="text/javascript">
         <!--
@@ -125,13 +86,44 @@
         </script>
         <script type="text/javascript" src="//feed.surfing-waves.com/js/rss-feed.js"></script>
         <!-- The link below helps keep this service FREE, and helps other people find the SW widget. Please be cool and keep it! Thanks. -->
-        <div style="color:#ccc;font-size:10px; text-align:right; width:20%;">powered by <a href="https://surfing-waves.com" rel="noopener" target="_blank" style="color:#ccc;">Surfing Waves</a></div>
         <!-- end sw-rss-feed code -->
+
+        </div>
+        {% for post in allPost %}
+        <div style="width: 60%; margin: auto">
+             <ul class="collection with-header">
+                 <li class="collection-item">
+                     {% if post.pic %}
+                         <img class="responsive-img" src="{{ post.pic.url }}" >
+                     {% endif %}
+                 </li>
+
+                 <li class="collection-item">Caption:{{ post.caption }}</li>
+                 <li class="collection-item">Comment:{{ post.comment }}</li>
+                 <li class="collection-item">Author:{{ post.author }}</li>
+                 <li class="collection-item">Date:{{ post.post_date }}</li>
+             </ul>
+           <form action="{% url 'app:likepost'  %}" method="POST">
+                    {% csrf_token %}
+                    {% if is_liked %}
+                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">Dislike</button>
+                    {% else %}
+                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">like</button>
+                    {% endif %}
+           {{post.likes.count}} Likes
+
+           </form>
         </div>
 
-         <hr>
+
+
+
 
     {% endfor %}
+
+    </div>
+
+
 {% endblock %}
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
