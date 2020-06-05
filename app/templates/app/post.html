@@ -1,16 +1,18 @@
 {% extends 'app/nav.html' %}
 
 {% block content %}
-     <form action="/addPost/" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    <div class="container" style="margin-top: 80px">
+        <form action="/addPost/" method="post" enctype="multipart/form-data"> {% csrf_token %}
 
 
-        comment: {{ form.comment }}<br>
-         caption: {{ form.caption }}<br>
-         picture : {{ form.pic }}<br>
-        <input type="submit" value="Post">
+            comment: {{ form.comment }}<br>
+            caption: {{ form.caption }}<br>
+            picture : {{ form.pic }}<br>
+            <input style="margin-top: 40px" type="submit" value="Post">
 
 
+        </form>
+    </div>
 
-    </form>
 {% endblock content %}
 
