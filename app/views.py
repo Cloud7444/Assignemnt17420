@@ -41,7 +41,7 @@ def loginPage(request):
                 return redirect('app:home')
 
             else:
-                messages.info(request,"Username OR password is incorrect")
+                messages.info(request,"Username or password is incorrect")
 
 
         context = {}
