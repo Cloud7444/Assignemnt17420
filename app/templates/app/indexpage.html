@@ -106,11 +106,13 @@
            <form action="{% url 'app:likepost'  %}" method="POST">
                     {% csrf_token %}
                     {% if is_liked %}
-                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">Dislike</button>
+                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-danger">Not Help</button>
                     {% else %}
-                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">like</button>
+                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">
+                            <img src="{% static "app/images/help.png" %}" style="width: 30%">
+                            Help</button>
                     {% endif %}
-           {{post.likes.count}} Likes
+           {{post.likes.count}} Help
 
            </form>
         </div>
